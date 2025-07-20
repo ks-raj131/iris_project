@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Iris Flower Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #ece9e6, #ffffff);">
+
+    <div style="max-width: 500px; width: 90%; margin: 40px auto; background-color: #f9f9f9; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h1 style="text-align: center; color: #333;">Iris Flower Predictor 🌸</h1>
+
+        <form method="POST" style="display: flex; flex-direction: column;">
+            {% csrf_token %}
+
+            <label style="margin-bottom: 5px;">Sepal Length (cm):</label>
+            <input type="number" step="any" name="sepal_length" required style="padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc;">
+
+            <label style="margin-bottom: 5px;">Sepal Width (cm):</label>
+            <input type="number" step="any" name="sepal_width" required style="padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc;">
+
+            <label style="margin-bottom: 5px;">Petal Length (cm):</label>
+            <input type="number" step="any" name="petal_length" required style="padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc;">
+
+            <label style="margin-bottom: 5px;">Petal Width (cm):</label>
+            <input type="number" step="any" name="petal_width" required style="padding: 10px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccc;">
+
+            <button type="submit" style="padding: 12px; background-color: #5c67f2; color: white; font-size: 16px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;">
+                Predict
+            </button>
+        </form>
+
+        {% if prediction %}
+            <h2 style="margin-top: 30px; text-align: center; color: #4caf50;">Predicted Class: {{ prediction }}</h2>
+        {% endif %}
+    </div>
+
+</body>
+</html>
